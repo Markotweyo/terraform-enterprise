@@ -1,12 +1,12 @@
 provider "google" {
-  credentials = file("C:/Users/Mark/Desktop/terraform-355617-bb4e0d0bb13a.json")
+  credentials = file("C:/Users/Mark/Desktop/terraform-355617-6673cd92e28e.json")
   project = "terraform-355617"
-  region  = "us-east4"
+  region  = "us-central1"
  
 }
 
 provider "google-beta" {
-  credentials = file("C:/Users/Mark/Desktop/terraform-355617-bb4e0d0bb13a.json")
-  region = "us-east4"
+  credentials = file("C:/Users/Mark/Desktop/terraform-355617-6673cd92e28e.json")
+  region = "us-central1"
   project = "terraform-355617"
 }

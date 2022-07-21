@@ -83,14 +83,12 @@ resource "google_compute_instance_template" "default" {
   
 }
 
-data "google_compute_node_types" "east4a" {
-  zone     = "us-east4-a"
-}
+
 
 //Node template
 resource "google_compute_node_template" "soletenant-tmpl" {
   name      = "soletenant-tmpl"
-  region    = "us-east4"
+  region    = "us-central1"
   node_type = "n1-node-96-624"
   
   node_affinity_labels = {
@@ -102,8 +100,21 @@ resource "google_compute_node_template" "soletenant-tmpl" {
 //Node group
 resource "google_compute_node_group" "nodes" {
   name        = "soletenant-group"
-  zone        = "us-east4-a"
+  zone        = "us-central1-a"
   description = "example google_compute_node_group for Terraform Google Provider"
   size  = 1
   node_template = google_compute_node_template.soletenant-tmpl.id
 }
+
+
+# [START storage_bucket_tf_with_versioning]
+resource "google_storage_bucket" "default" {
+  name          = "bucket-tfstate-name"
+  force_destroy = false
+  location      = "us-central1"
+  storage_class = "STANDARD"
+  versioning {
+    enabled = true
+  }
+}
+# [END storage_bucket_tf_with_versioning]

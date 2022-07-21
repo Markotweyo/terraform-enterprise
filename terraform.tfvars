@@ -1,4 +1,4 @@
-region          = "us-east4"
+region          = "us-central1"
 gcp_project     = "terraform-355617"
-name            = "dev"
+name            = "prod"
 subnet_cidr     = "10.10.0.0/24"
